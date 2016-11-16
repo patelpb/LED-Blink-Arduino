@@ -1,4 +1,6 @@
-
+//intial source for code: http://www.instructables.com/id/Programming-a-HTTP-Server-on-ESP-8266-12E/?ALLSTEPS   
+//The Purpose of this code is to connect to a WiFi server and control the status of the LED on the ESP8266
+  //using a website.
     #include <ESP8266WiFi.h>
      WiFiServer server(80); //Initialize the server on Port 80
      const short int LED_PIN = 16;//GPIO16
@@ -21,6 +23,7 @@ return; }
          String request = client.readStringUntil('\r');
          Serial.println(request);
          // Handle the Request
+         //LOW corresponds to ON and HIGH corresponds to OFF (status of the LED)
          if (request.indexOf("/ONCE") != -1){
            digitalWrite(LED_PIN, LOW);
            delay (1000);
